@@ -11,11 +11,30 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images/`,
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-remark-images`,
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".md", ".mdx"],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 760,
+              linkImagesToOriginal: false,
+              withWebp: true,
+              quality: 80,
+            },
+          },
+        ],
       },
-      gatsbyRemarkPlugins: [],
     },
   ],
 }
